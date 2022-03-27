@@ -1,0 +1,43 @@
+.is-hidden {
+    display: none;
+}
+.btn_LichSuKham{
+    width: 200px;
+    height: 50px;
+    align-items: center;
+}
+.card {
+    width: 700px;
+    height: auto;
+}
+.row{
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    position: static;
+}
+.vitributton{
+    display: inline;
+    
+
+}
+.login-box{
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+.btnxxx{
+    position: static;
+    float: left;
+    border-radius: 5px;
+}
+.btnyyy{
+    position: static;
+    float: right;
+    border-radius: 5px;
+}
+.rowx{
+    width: 500px;
+}

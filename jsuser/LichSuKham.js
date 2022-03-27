@@ -124,7 +124,7 @@ $(document).ready(function () {
     );
   });
 
-  $(".btnlogin").on("click", function () {
+  $(".btn_LichSuKham").on("click", function () {
     console.log('abc')
     var sdt = $(".txt_sdt").val();
     var datasend = {

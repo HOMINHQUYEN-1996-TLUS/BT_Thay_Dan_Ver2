@@ -7,7 +7,7 @@ function show() {
   queryDataPost("php/api.php", dataSend, function (data) {
     if (data.items.length == 0) {
       console.log(data);
-      $(".addListTheLoai").html(
+      $(".addListPhongBan").html(
         "<tr><td colspan=4>Không tìm thấy record</td><tr>"
       );
     } else {
@@ -52,7 +52,7 @@ function show() {
         stt++;
       }
 
-        $(".addListTheLoai").html(htmls);
+        $(".addListPhongBan").html(htmls);
     }
   });
 }

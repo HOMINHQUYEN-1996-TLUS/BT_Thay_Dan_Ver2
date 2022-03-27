@@ -179,13 +179,13 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item menutheloai">
+              <li class="nav-item menuPhongBan">
                 <a href="#" class="nav-link">
                   <i class="fas fa-arrow-circle-right"></i>
                   <p onclick="show()">Danh sách phòng ban</p>
                 </a>
               </li>
-              <li class="nav-item menunhaxuatban">
+              <li class="nav-item menuBenhNhan">
                 <a href="#" class="nav-link">
                   <i class="fas fa-arrow-circle-right"></i>
                   <p>Thêm Bệnh Nhân</p>
@@ -263,7 +263,7 @@
       
         <!-- /.row -->
         <!-- thể loại row -->
-        <div class="row formtheloai is-hidden">
+        <div class="row is-hidden formPhongBan ">
           <!-- Left col -->
           <section class="col-lg-12">
             <!-- Custom tabs (Charts with tabs)-->
@@ -293,10 +293,9 @@
                             <th>ID_Bacsi</th>
                             <th>ID_KhachHang</th>
                             <th>ID_DichVu</th>
-                            <th style="width: 100px">Thao tác</th>
                           </tr>
                         </thead>
-                        <tbody class="addListTheLoai">
+                        <tbody class="addListPhongBan">
                                               
                         </tbody>
                       </table>
@@ -312,8 +311,170 @@
           <!-- right col -->
         </div>
         <!-- /.row (main row) -->
+        <div class="row is-hidden formsach ">
+          <!-- Left col -->
+          <section class="col-lg-12">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="card">
+              <div class="card-header bg-danger">
+                <h3 class="card-title">
+                  <i class="fas fa-chart-pie mr-1"></i>
+                 Thêm Hóa Đơn
+                </h3>
+                
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content p-0">
+                  <div class="card card-info">
+                   
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-sm-6">
+                          <div class="form-group">
+                           <label for="inputEmail3" class="col-sm-2 col-form-label">ID Hóa Đơn</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control txt_IDHoaDon"  placeholder="ID Hóa Đơn">
+                           </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 col-form-label">ID Bác Sĩ</label>
+                            <div class="col-sm-10">
+                              <select id="select_IDBacsi_HoaDon">
+                                <option>BS001</option>
+                                <option>BS002</option>
+                                <option>BS003</option>
+                              </select>
+                           </div>
+                          </div>
+                          </div>
+                       </div>
+
+                       <div class="row">
+                        <div class="col-sm-6">
+                        <div class="form-group">
+                         <label for="inputEmail3" class="col-sm-6 col-form-label">Số trang</label>
+                          <div class="col-sm-10">
+                          <input type="text" class="form-control txtsotrang"  placeholder="Số trang">
+                         </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="inputPassword3" class="col-sm-2 col-form-label">Giá bán</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control txtgiaban"  placeholder="Giá">
+                         </div>
+                        </div>
+                        </div>
+                     </div>
+
+                     <div class="row">
+                      <div class="col-sm-12">
+                      <div class="form-group">
+                       <label for="inputEmail3" class="col-sm-8 col-form-label">Tên thể loại</label>
+                        <div class="col-sm-8 ">
+                          <select class="form-control cbtheloai" >
+                           
+                          </select>
+                       </div>
+                      </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                      <div class="form-group">
+                       <label for="inputEmail3" class="col-sm-8 col-form-label">Nhà Xuất Bản</label>
+                       <div class="col-sm-8 ">
+                          <select class="form-control cbnhaxb">
+                           
+                          </select>
+                      </div>
+                      </div>
+                    </div>
+                   </div>
+          <div class="row">
+     <div class="col-sm-12">
+                  <!-- text input -->
+                  <div class="form-group">
+                    
+           <label class="progresscommon"> Ảnh Sách</label>
+                                     
+                                            <div class="iconimage">
+                                                <input id="imgSach" style="display:none" type="file" accept="image/*"/>
+                                                <a href="#">
+                                                    <label for="imgSach" class="custom-file-upload" id="imgSach">
+                                                        <img width="25px" style="border:0px"
+                                                             src="images/iconuploadimage.png"/>Chọn ảnh</label>
+                                                </a>
+                                            </div>
+                                            <div class="col-sm-2 imgsach is-hidden">
+                                                <img src="" id="imgPreviewSach" width="250" height="150">
+                      <i class="fa fa-trash btndeletefilesach"></i>
+                                            </div>					
+                  </div>
+                </div>
+    </div>
+                      </div>
+                      <!-- /.card-body -->
+                      <div class="card-footer">
+                        <button type="button" class="btn btn-info btnthemsach">Thêm</button>&nbsp;<button type="button" class="btn btn-info btnluusach">Lưu</button>&nbsp;<button type="button" class="btn btn-info btnxoasach">Xóa</button>&nbsp;<button type="button" class="btn btn-info btnsuasach">Sửa</button>
+                        <button type="button" class="btn btn-default float-right btnlamlaisach">Làm lại</button>
+                      </div>
+                      <!-- /.card-footer -->
+                    </form>
+                  </div>
+                  <div class="card">
+        <div class="card-header">
+        <div class="input-group input-group-sm">
+              <input type="text" class="form-control txtfindsach" placeholder='Gõ nội dung cần tìm và nhấn Enter hoặc nút Tìm'>
+              <span class="input-group-append">
+                <button type="button" class="btn btn-info btn-flat btnfindsach">Tìm</button>
+              </span>
+            </div>
+    </div>
+                    <div class="card-header">
+                      <h3 class="card-title">Các nhà xuất bản hiện có:</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0 table-reponsive">                  
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th style="width: 10px">#</th>
+                            <th>Mã sách</th>
+                            <th>Tên sách</th>
+                            <th>Số trang</th>
+                            <th>Ngày xuất bản</th>
+                            <th>Nhà xuất bản</th>
+                            <th>Thể Loại</th>
+                            <th style="width: 100px">Thao tác</th>
+                          </tr>
+                        </thead>
+                        <tbody class="addListSach">
+                                  
+                        </tbody>
+                      </table>
+                    </div>
+        <div class="pagenumbersach">
+        
+        </div>
+                    <!-- /.card-body -->
+                  </div>
+                </div>
+              </div><!-- /.card-body -->
+            </div>
+           
+          </section>
+       
+          <!-- right col -->
+        </div>
         <!-- Nhà xuất bản row -->
-        <div class="row formnhaxuatban is-hidden">
+        <div class="row is-hidden formBenhNhan ">
           <!-- Left col -->
           <section class="col-lg-12">
             <!-- Custom tabs (Charts with tabs)-->
@@ -336,36 +497,44 @@
                         <div class="row">
                           <div class="col-sm-6">
                           <div class="form-group">
-                           <label for="inputEmail3" class="col-sm-2 col-form-label">Số Điện Thoại</label>
-                            <div class="col-sm-10">
-                            <input type="text" class="form-control txt_IDKhachhang"   placeholder="Số Điện Thoại">
-                           </div>
+                           <label for="inputEmail3" class="col-sm-2 col-form-label">ID Phong Ban</label>
+                           <input type="text" class="form-control txt_IDPhongBan"  placeholder="ID_PhongBan">
                           </div>
                         </div>
                         <div class="col-sm-6">
                           <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-2 col-form-label">Tên Bệnh Nhân</label>
+                            <label for="inputPassword3" class="col-sm-2 col-form-label">Tên Phòng</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control txt_tenBenhNhan"  placeholder="Tên XB">
-                           </div>
-                          </div>
+                              <select id="select_TenPhong">
+                                <option>Kham Răng 1</option>
+                                <option>Kham Răng 2</option>
+                                <option>Kham Răng 3</option>
+                                <option>Kham Răng 4</option>
+                                <option>Kham Răng 5</option>
+                              </select>
+                              </div>
+                            </div>
                           </div>
                        </div>
 
                        <div class="row">
                         <div class="col-sm-6">
                         <div class="form-group">
-                         <label for="inputEmail3" class="col-sm-6 col-form-label">Ngày Sinh</label>
+                         <label for="inputEmail3" class="col-sm-6 col-form-label">ID Bác Sĩ</label>
                           <div class="col-sm-10">
-                          <input type="text" class="form-control txt_ngaysinh"  placeholder="Ngày Sinh">
+                            <select id="select_IDBacsi">
+                              <option>BS001</option>
+                              <option>BS002</option>
+                              <option>BS003</option>
+                            </select>
                          </div>
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 col-form-label">Giới Tính</label>
+                          <label for="inputPassword3" class="col-sm-2 col-form-label">ID Khách Hàng</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control txt_gioitinh"  placeholder="Giới Tính">
+                            <input type="text" class="form-control txt_IDKhachhang"  placeholder="ID khách hàng">
                          </div>
                         </div>
                         </div>
@@ -374,9 +543,14 @@
                      <div class="row">
                       <div class="col-sm-12">
                       <div class="form-group">
-                       <label for="inputEmail3" class="col-sm-6 col-form-label">Địa chỉ</label>
+                       <label for="inputEmail3" class="col-sm-6 col-form-label">ID Dịch vụ</label>
                         <div class="col-sm-12">
-                        <input type="text" class="form-control txt_diachi"  placeholder="Địa chỉ">
+                          <select id="select_IDDichVu">
+                            <option>DV001</option>
+                            <option>DV002</option>
+                            <option>DV003</option>
+                            <option>DV004</option>
+                          </select>
                        </div>
                       </div>
                     </div>
@@ -385,7 +559,7 @@
                       </div>
                       <!-- /.card-body -->
                       <div class="card-footer">
-                        <button type="button" class="btn btn-info">Thêm</button>&nbsp;<button type="button" class="btn btn-info">Lưu</button>&nbsp;<button type="button" class="btn btn-info">Xóa</button>&nbsp;<button type="button" class="btn btn-info">Sửa</button>
+                        <button type="button" class="btn btn-info btn_themBenhNhan">Thêm</button>&nbsp;<button type="button" class="btn btn-info">Lưu</button>&nbsp;<button type="button" class="btn btn-info">Xóa</button>&nbsp;<button type="button" class="btn btn-info">Sửa</button>
                         <button type="button" class="btn btn-default float-right">Làm lại</button>
                       </div>
                       <!-- /.card-footer -->
@@ -444,164 +618,7 @@
           <!-- right col -->
         </div>
             <!-- Sách row -->
-            <div class="row formsach is-hidden">
-              <!-- Left col -->
-              <section class="col-lg-12">
-                <!-- Custom tabs (Charts with tabs)-->
-                <div class="card">
-                  <div class="card-header bg-danger">
-                    <h3 class="card-title">
-                      <i class="fas fa-chart-pie mr-1"></i>
-                     Thông tin của Sách
-                    </h3>
-                    
-                  </div><!-- /.card-header -->
-                  <div class="card-body">
-                    <div class="tab-content p-0">
-                      <div class="card card-info">
-                       
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        <form class="form-horizontal">
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col-sm-6">
-                              <div class="form-group">
-                               <label for="inputEmail3" class="col-sm-2 col-form-label">Mã Sách</label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control txtmasach"  placeholder="Mã Sách">
-                               </div>
-                              </div>
-                            </div>
-                            <div class="col-sm-6">
-                              <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 col-form-label">Tên Sách</label>
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control txttensach"  placeholder="Tên Sách">
-                               </div>
-                              </div>
-                              </div>
-                           </div>
-    
-                           <div class="row">
-                            <div class="col-sm-6">
-                            <div class="form-group">
-                             <label for="inputEmail3" class="col-sm-6 col-form-label">Số trang</label>
-                              <div class="col-sm-10">
-                              <input type="text" class="form-control txtsotrang"  placeholder="Số trang">
-                             </div>
-                            </div>
-                          </div>
-                          <div class="col-sm-6">
-                            <div class="form-group">
-                              <label for="inputPassword3" class="col-sm-2 col-form-label">Giá bán</label>
-                              <div class="col-sm-10">
-                                <input type="text" class="form-control txtgiaban"  placeholder="Giá">
-                             </div>
-                            </div>
-                            </div>
-                         </div>
-    
-                         <div class="row">
-                          <div class="col-sm-12">
-                          <div class="form-group">
-                           <label for="inputEmail3" class="col-sm-8 col-form-label">Tên thể loại</label>
-                            <div class="col-sm-8 ">
-                              <select class="form-control cbtheloai" >
-                               
-                              </select>
-                           </div>
-                          </div>
-                        </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-sm-12">
-                          <div class="form-group">
-                           <label for="inputEmail3" class="col-sm-8 col-form-label">Nhà Xuất Bản</label>
-                           <div class="col-sm-8 ">
-                              <select class="form-control cbnhaxb">
-                               
-                              </select>
-                          </div>
-                          </div>
-                        </div>
-                       </div>
-					    <div class="row">
-				 <div class="col-sm-12">
-                      <!-- text input -->
-                      <div class="form-group">
-                        
-							 <label class="progresscommon"> Ảnh Sách</label>
-                                         
-                                                <div class="iconimage">
-                                                    <input id="imgSach" style="display:none" type="file" accept="image/*"/>
-                                                    <a href="#">
-                                                        <label for="imgSach" class="custom-file-upload" id="imgSach">
-                                                            <img width="25px" style="border:0px"
-                                                                 src="images/iconuploadimage.png"/>Chọn ảnh</label>
-                                                    </a>
-                                                </div>
-                                                <div class="col-sm-2 imgsach is-hidden">
-                                                    <img src="" id="imgPreviewSach" width="250" height="150">
-													<i class="fa fa-trash btndeletefilesach"></i>
-                                                </div>					
-                      </div>
-                    </div>
-				</div>
-                          </div>
-                          <!-- /.card-body -->
-                          <div class="card-footer">
-                            <button type="button" class="btn btn-info btnthemsach">Thêm</button>&nbsp;<button type="button" class="btn btn-info btnluusach">Lưu</button>&nbsp;<button type="button" class="btn btn-info btnxoasach">Xóa</button>&nbsp;<button type="button" class="btn btn-info btnsuasach">Sửa</button>
-                            <button type="button" class="btn btn-default float-right btnlamlaisach">Làm lại</button>
-                          </div>
-                          <!-- /.card-footer -->
-                        </form>
-                      </div>
-                      <div class="card">
-					  <div class="card-header">
-					  <div class="input-group input-group-sm">
-                  <input type="text" class="form-control txtfindsach" placeholder='Gõ nội dung cần tìm và nhấn Enter hoặc nút Tìm'>
-                  <span class="input-group-append">
-                    <button type="button" class="btn btn-info btn-flat btnfindsach">Tìm</button>
-                  </span>
-                </div>
-				</div>
-                        <div class="card-header">
-                          <h3 class="card-title">Các nhà xuất bản hiện có:</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body p-0 table-reponsive">                  
-                          <table class="table table-hover">
-                            <thead>
-                              <tr>
-                                <th style="width: 10px">#</th>
-                                <th>Mã sách</th>
-                                <th>Tên sách</th>
-                                <th>Số trang</th>
-                                <th>Ngày xuất bản</th>
-                                <th>Nhà xuất bản</th>
-                                <th>Thể Loại</th>
-                                <th style="width: 100px">Thao tác</th>
-                              </tr>
-                            </thead>
-                            <tbody class="addListSach">
-                                      
-                            </tbody>
-                          </table>
-                        </div>
-						<div class="pagenumbersach">
-						
-						</div>
-                        <!-- /.card-body -->
-                      </div>
-                    </div>
-                  </div><!-- /.card-body -->
-                </div>
-               
-              </section>
-           
-              <!-- right col -->
-            </div>
+        
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -701,6 +718,7 @@
 <script src="jsuser/xulytheloai.js"></script>
 <script src="jsuser/xuly_phongban.js"></script>
 <script src="jsuser/xulysach.js"></script>
+<script src="jsuser/xulyBenhNhan.js"></script>
 <script src="spuploadimagestatus/canvas-to-blob.min.js"></script>
 <script src="spuploadimagestatus/resize.js"></script>
 </body>
