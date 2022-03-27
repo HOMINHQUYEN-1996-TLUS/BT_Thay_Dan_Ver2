@@ -149,14 +149,14 @@ $(document).ready(function () {
           htmls +
           '<tr data-ID_khachhang="' +
           d.ID_khachhang +
-          '" data-HoTen="' +
-          d.HoTen +
           '" data-TongTien="' +
           d.TongTien +
           '" data-NgayThang="' +
           d.NgayThang +
           '" data-TenPhong="' +
           d.TenPhong +
+          '" data-HoTen="' +
+          d.HoTen +
           '">' +
           "<td>" +
           stt +
@@ -165,9 +165,6 @@ $(document).ready(function () {
           d.ID_khachhang +
           "</td>" +
           "<td>" +
-          d.HoTen +
-          "</td>" +
-          "<td>" +
           d.TongTien +
           "</td>" +
           "<td>" +
@@ -175,6 +172,9 @@ $(document).ready(function () {
           "</td>" +
           "<td>" +
           d.TenPhong +
+          "</td>" +
+          "<td>" +
+          d.HoTen +
           "</td>" +
           '<td class="click_view_theloai"><span class="badge bg-danger">Xem</span></td>' +
           "</tr>";

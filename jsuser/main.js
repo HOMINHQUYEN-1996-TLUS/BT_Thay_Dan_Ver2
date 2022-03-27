@@ -2,9 +2,10 @@ function swapMain(tenbien) {
   $(".form_bacsi").addClass("is-hidden"); //ẩn
   $(".form_khachhang").addClass("is-hidden"); //ẩn
   $(".formPhongBan").addClass("is-hidden"); //ẩn
-  $(".formsach").addClass("is-hidden"); //ẩn
+  
   $(".formBenhNhan").addClass("is-hidden"); //ẩn
-  $("." + tenbien).removeClass("is-hidden");
+  $(".formHoaDon").addClass("is-hidden"); //ẩn
+  $("."+tenbien).removeClass("is-hidden");
 }
 var record = 3;
 function queryDataPost(url, dataSend, callback) {
@@ -90,36 +91,32 @@ $(document).ready(function () {
   });
   $(".menuPhongBan").click(function () {
     //   $(".titlestatus").html(' <li class="breadcrumb-item"><a href="#">Danh Mục</a></li><li class="breadcrumb-item active">Thể Loại</li>');
-
+    console.log('da den day')
     $(".titlestatus").html(
       ' <li class="breadcrumb-item"><a href="#">Danh Mục</a></li><li class="breadcrumb-item active">' +
         $(this).text() +
         "</li>"
     );
-
     swapMain("formPhongBan");
     $(".btnthemtl").prop("disabled", false);
     $(".btnsuatl").prop("disabled", true);
     $(".btnluutl").prop("disabled", true);
-    showDataTheLoai();
   });
   $(".menuBenhNhan").click(function () {
-	  console.log('abc')
     $(".titlestatus").html(
       ' <li class="breadcrumb-item"><a href="#">Danh Mục</a></li><li class="breadcrumb-item active">' +
         $(this).text() +
         "</li>"
     );
-
     swapMain("formBenhNhan");
   });
-  $(".menusach").click(function () {
+  $(".menuHoaDon").click(function () {
     $(".titlestatus").html(
       ' <li class="breadcrumb-item"><a href="#">Danh Mục</a></li><li class="breadcrumb-item active">' +
         $(this).text() +
         "</li>"
     );
-    swapMain("formsach");
+    swapMain("formHoaDon");
     showCBTheLoai();
     showCBNhaXB();
     showDataSach(0, record);

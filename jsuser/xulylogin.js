@@ -25,8 +25,10 @@ $(document).ready(function () {
       };
       console.log(datasend);
       queryData("php/api.php", datasend, function (data) {
-        console.log(data);
-        if (data.success == 1) {
+        var dog = data.items[0];
+        console.log(dog.count);
+        console.log(data)
+        if (data.success == 1 && dog.count != 0) {
           if ($(".remember").is(":checked")) {
             localStorage.setItem("rememberbookstore", true);
           } else {

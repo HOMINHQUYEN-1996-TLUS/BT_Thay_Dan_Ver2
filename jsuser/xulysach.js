@@ -2,21 +2,21 @@ var urlimagesach=""; //biến lưu tên tập tin hình ảnh
 var flagSach=0
 $(document).ready(function(){
 	//giả sử người dùng chưa nhấn nút thêm hoặc nút sửa
-    $(".btnthemsach").on('click',function(){
-		console.log("click them");
-		//1.nhấn vào nút thì nút thêm, lưu sáng, sửa mờ
-		$(".btnthemsach").prop("disabled",true);
-		$(".btnluusach").prop("disabled",false);
-        $(".btnsuasach").prop("disabled",true);
-		$(".txtmasach").prop("disabled",false);
-		//2.Xóa các ô text field 
-		resetViewSach();
-		flagSach=1;
-		urlimagesach="";
-		$(".imgsach").addClass("is-hidden");    
-		$("#imgSach").val("");
-		document.querySelector("#imgSach").addEventListener('change', initUploadAllCommon);	
-	});
+  //   $(".btnthemsach").on('click',function(){
+	// 	console.log("click them");
+	// 	//1.nhấn vào nút thì nút thêm, lưu sáng, sửa mờ
+	// 	$(".btnthemsach").prop("disabled",true);
+	// 	$(".btnluusach").prop("disabled",false);
+  //       $(".btnsuasach").prop("disabled",true);
+	// 	$(".txtmasach").prop("disabled",false);
+	// 	//2.Xóa các ô text field 
+	// 	resetViewSach();
+	// 	flagSach=1;
+	// 	urlimagesach="";
+	// 	$(".imgsach").addClass("is-hidden");    
+	// 	$("#imgSach").val("");
+	// 	document.querySelector("#imgSach").addEventListener('change', initUploadAllCommon);	
+	// });
 	 $(".btnsuasach").on('click',function(){
 		 document.querySelector("#imgSach").addEventListener('change', initUploadAllCommon);	
 		console.log("click them");

@@ -1,6 +1,5 @@
 
 function show() {
-  console.log("abc");
   var dataSend = {
     event: "getAllPhongBan",
   };

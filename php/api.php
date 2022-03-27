@@ -7,22 +7,21 @@ switch ($event) {
 	$mang=array();
 		$username=$_POST['username'];
 		$password=sha1($_POST['password']);
-        $rs=mysqli_query($conn,"select username,password from manager_login u where  username='".$username."' and `password`='".$password."'");
-		if(mysqli_num_rows($rs)>0){
-		while ($rows=mysqli_fetch_array($rs)){
-			
-            
-            $usertemp['username']=$rows['username'];
-            $usertemp['password']=$rows['password'];
-			
-		   array_push($mang,$usertemp);
-		}
+        //$rs=mysqli_query($conn,"select username,password from manager_login u where  username='".$username."' and `password`='".$password."'");
+		$rs = mysqli_query($conn,"call checkLogin('".$username."','".$password."')");
+        if(mysqli_num_rows($rs)>0){
+		    while ($rows=mysqli_fetch_array($rs)){
+			    // $usertemp['username']=$rows['username'];
+                // $usertemp['password']=$rows['password'];
+                $usertemp['count'] = $rows['count'];
+		        array_push($mang,$usertemp);
+		    }
 	
-        $jsondata['success'] =1;
+            $jsondata['success'] =1;
 		
-        $jsondata['items'] =$mang;
+            $jsondata['items'] =$mang;
 		
-        echo json_encode($jsondata);
+            echo json_encode($jsondata);
 		}
 		else{
 		$jsondata['success'] =0;
@@ -250,8 +249,9 @@ switch ($event) {
 
     case "getAllPhongBan" :
         $mang=array();   
-        $sql=mysqli_query($conn,"select ID_PhongBan,TenPhong,ID_bacsi,ID_khachhang,ID_DichVu from phongban"); 
-		while($rows=mysqli_fetch_array($sql))
+        //$sql=mysqli_query($conn,"select ID_PhongBan,TenPhong,ID_bacsi,ID_khachhang,ID_DichVu from phongban"); 
+		$sql = mysqli_query($conn,"call procedureName()");
+        while($rows=mysqli_fetch_array($sql))
         {        
             $usertemp['ID_PhongBan']=$rows['ID_PhongBan'];//{'matl':'TH','tentl':'tin hoc'}
 			$usertemp['TenPhong']=$rows['TenPhong'];  //{'matl':'TH','tentl':'tin hoc'}
@@ -267,18 +267,20 @@ switch ($event) {
     case "LichSuKham" : 
         $ID_khachhang=$_POST['ID_khachhang'];
         $mang=array();   
-        $sql=mysqli_query($conn,"select khachhang.ID_khachhang, khachhang.HoTen, hoadon.TongTien, hoadon.NgayThang,phongban.TenPhong
-            FROM ( ( hoadon INNER join phongban
-            ON hoadon.ID_PhongBan = phongban.ID_PhongBan ) inner join khachhang 
-            on phongban.ID_khachhang = khachhang.ID_khachhang)
-            WHERE khachhang.ID_khachhang ='".$ID_khachhang."'"); 
+        // $sql=mysqli_query($conn,"select khachhang.ID_khachhang, hoadon.TongTien, hoadon.NgayThang,phongban.TenPhong,bacsi.HoTen
+        //     FROM ( ( ( hoadon INNER join phongban
+        //     ON hoadon.ID_PhongBan = phongban.ID_PhongBan ) inner join khachhang 
+        //     on phongban.ID_khachhang = khachhang.ID_khachhang) INNER JOIN bacsi
+        //     on phongban.ID_bacsi = bacsi.ID_bacsi)
+        //     WHERE khachhang.ID_khachhang = '".$ID_khachhang."' order by hoadon.NgayThang asc "); 
+        $sql = mysqli_query($conn,"call getLichSuKham('".$ID_khachhang."')");
 		while($rows=mysqli_fetch_array($sql))
         {
             $usertemp['ID_khachhang']=$rows['ID_khachhang'];
-            $usertemp['HoTen']=$rows['HoTen'];//{'matl':'TH','tentl':'tin hoc'}
 			$usertemp['TongTien']=$rows['TongTien'];  //{'matl':'TH','tentl':'tin hoc'}
             $usertemp['NgayThang']=$rows['NgayThang'];
             $usertemp['TenPhong']=$rows['TenPhong'];
+            $usertemp['HoTen']=$rows['HoTen'];
             array_push($mang,$usertemp); //[{'matl':'TH','tentl':'tin hoc'},{'matl':'TH','tentl':'tin hoc'}]
         }       
         $jsonData['items'] =$mang; //{items:[{'matl':'TH','tentl':'tin hoc'},{'matl':'TH','tentl':'tin hoc'},{'matl':'TH','tentl':'tin hoc'}]}
@@ -297,6 +299,33 @@ switch ($event) {
                  $res["success"] = 2; //{success:2} //đều có nghĩa là đã trùng tên
             }else{
             $sql="INSERT INTO `phongban`(`ID_PhongBan`, `TenPhong`, `ID_bacsi`, `ID_khachhang`, `ID_DichVu`) VALUES ('".$ID_PhongBan."','".$TenPhong."','".$ID_bacsi."','".$ID_khachhang."','".$ID_DichVu."')";
+                if (mysqli_query($conn, $sql)) {
+                    if(mysqli_affected_rows($conn)>0){ //có thay đổi dữ liệu
+                        
+                             $res["success"] = 1; //Insert dữ liệu thành công
+                    }
+                    else{
+                        $res["success"] = 0;//Không thành công
+                    }
+                } else {
+                    $res["success"] = 0;  //Không thành công
+                }
+            }
+            echo json_encode($res);
+            mysqli_close($conn);
+            break;
+        case "insertHoaDon" :
+            $ID_HoaDon=$_POST['ID_HoaDon'];
+            $ID_bacsi=$_POST['ID_bacsi'];   
+            $ID_PhongBan=$_POST['ID_PhongBan'];
+            $NgayThang=$_POST['NgayThang'];
+            $TongTien=$_POST['TongTien'];	
+            $rs=mysqli_query($conn,"select COUNT(*) as 'total' from  hoadon where ID_HoaDon='".$ID_HoaDon."' ");
+            $row=mysqli_fetch_array($rs);
+            if((int)$row['total']>0){
+                 $res["success"] = 2; //{success:2} //đều có nghĩa là đã trùng tên
+            }else{
+            $sql="INSERT INTO `hoadon`(`ID_HoaDon`, `ID_bacsi`, `ID_PhongBan`, `NgayThang`, `TongTien`) VALUES ('".$ID_HoaDon."','".$ID_bacsi."','".$ID_PhongBan."','".$NgayThang."','".$TongTien."')";
                 if (mysqli_query($conn, $sql)) {
                     if(mysqli_affected_rows($conn)>0){ //có thay đổi dữ liệu
                         
