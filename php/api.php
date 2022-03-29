@@ -278,6 +278,7 @@ switch ($event) {
         {
             $usertemp['ID_khachhang']=$rows['ID_khachhang'];
 			$usertemp['TongTien']=$rows['TongTien'];  //{'matl':'TH','tentl':'tin hoc'}
+            $usertemp['GiaCuoi']=$rows['GiaCuoi']; 
             $usertemp['NgayThang']=$rows['NgayThang'];
             $usertemp['TenPhong']=$rows['TenPhong'];
             $usertemp['HoTen']=$rows['HoTen'];

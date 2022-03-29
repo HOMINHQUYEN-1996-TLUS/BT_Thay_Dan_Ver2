@@ -233,7 +233,7 @@ function buildUserDropdown() {
   var avartar = localStorage.getItem("avartarbookstore");
 
   if (myUser == undefined || myUser == null || myUser == "") {
-    location.href = "login.html";
+    // location.href = "login.html";
   } else {
     $(".addusername").html(
       "<div style='text-align=center;'>" +
@@ -255,5 +255,5 @@ function logout() {
 
   localStorage.removeItem("userbookstore");
 
-  location.href = "login.html";
+  // location.href = "login.html";
 }

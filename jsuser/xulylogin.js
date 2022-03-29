@@ -9,6 +9,8 @@ $(document).ready(function () {
       $(".txtemail").val(localStorage.getItem("usernamebookstore"));
       $(".txtpass").val(localStorage.getItem("passwordbookstore"));
     }
+  } else {
+    console.log("da bang null")
   }
   $(".btnlogin").click(function () {
     var username = $(".txtemail").val();

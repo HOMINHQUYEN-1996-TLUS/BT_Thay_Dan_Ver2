@@ -124,7 +124,19 @@ $(document).ready(function () {
     );
   });
 
-  $(".btn_LichSuKham").on("click", function () {
+  
+  $(".addListTheLoai").on("click", ".click_view_theloai", function () {
+    var matl = $(this).parent().attr("data-matl");
+    var tentl = $(this).parent().attr("data-tentl");
+    $(".txtmatl").val(matl);
+    $(".txttentl").val(tentl);
+    $(".btnthemtl").prop("disabled", true);
+    $(".btnluutl").prop("disabled", true);
+    $(".btnsuatl").prop("disabled", false);
+    $(".txtmatl").prop("disabled", true);
+  });
+});
+$(".btn_LichSuKham").on("click", function () {
     console.log('abc')
     var sdt = $(".txt_sdt").val();
     var datasend = {
@@ -151,6 +163,8 @@ $(document).ready(function () {
           d.ID_khachhang +
           '" data-TongTien="' +
           d.TongTien +
+          '" data-GiaCuoi="' +
+          d.GiaCuoi +
           '" data-NgayThang="' +
           d.NgayThang +
           '" data-TenPhong="' +
@@ -166,6 +180,9 @@ $(document).ready(function () {
           "</td>" +
           "<td>" +
           d.TongTien +
+          "</td>" +
+          "<td>" +
+          d.GiaCuoi +
           "</td>" +
           "<td>" +
           d.NgayThang +
@@ -185,17 +202,6 @@ $(document).ready(function () {
     }
     });
   });
-  $(".addListTheLoai").on("click", ".click_view_theloai", function () {
-    var matl = $(this).parent().attr("data-matl");
-    var tentl = $(this).parent().attr("data-tentl");
-    $(".txtmatl").val(matl);
-    $(".txttentl").val(tentl);
-    $(".btnthemtl").prop("disabled", true);
-    $(".btnluutl").prop("disabled", true);
-    $(".btnsuatl").prop("disabled", false);
-    $(".txtmatl").prop("disabled", true);
-  });
-});
 function resetViewTL() {
   $(".txtmatl").val("");
   $(".txttentl").val("");
