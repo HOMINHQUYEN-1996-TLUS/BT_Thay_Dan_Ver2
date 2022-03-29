@@ -282,6 +282,7 @@ switch ($event) {
             $usertemp['NgayThang']=$rows['NgayThang'];
             $usertemp['TenPhong']=$rows['TenPhong'];
             $usertemp['HoTen']=$rows['HoTen'];
+            $usertemp['TenDichVu']=$rows['TenDichVu'];
             array_push($mang,$usertemp); //[{'matl':'TH','tentl':'tin hoc'},{'matl':'TH','tentl':'tin hoc'}]
         }       
         $jsonData['items'] =$mang; //{items:[{'matl':'TH','tentl':'tin hoc'},{'matl':'TH','tentl':'tin hoc'},{'matl':'TH','tentl':'tin hoc'}]}
@@ -317,16 +318,17 @@ switch ($event) {
             break;
         case "insertHoaDon" :
             $ID_HoaDon=$_POST['ID_HoaDon'];
-            $ID_bacsi=$_POST['ID_bacsi'];   
+            // $ID_bacsi=$_POST['ID_bacsi'];   
             $ID_PhongBan=$_POST['ID_PhongBan'];
             $NgayThang=$_POST['NgayThang'];
-            $TongTien=$_POST['TongTien'];	
+            // $TongTien=$_POST['TongTien'];	
             $rs=mysqli_query($conn,"select COUNT(*) as 'total' from  hoadon where ID_HoaDon='".$ID_HoaDon."' ");
             $row=mysqli_fetch_array($rs);
             if((int)$row['total']>0){
                  $res["success"] = 2; //{success:2} //đều có nghĩa là đã trùng tên
             }else{
-            $sql="INSERT INTO `hoadon`(`ID_HoaDon`, `ID_bacsi`, `ID_PhongBan`, `NgayThang`, `TongTien`) VALUES ('".$ID_HoaDon."','".$ID_bacsi."','".$ID_PhongBan."','".$NgayThang."','".$TongTien."')";
+            //$sql="INSERT INTO `hoadon`(`ID_HoaDon`, `ID_bacsi`, `ID_PhongBan`, `NgayThang`, `TongTien`) VALUES ('".$ID_HoaDon."','".$ID_bacsi."','".$ID_PhongBan."','".$NgayThang."','".$TongTien."')";
+            $sql = "call insert_hoadon('".$ID_HoaDon."','".$ID_PhongBan."','".$NgayThang."')";   
                 if (mysqli_query($conn, $sql)) {
                     if(mysqli_affected_rows($conn)>0){ //có thay đổi dữ liệu
                         

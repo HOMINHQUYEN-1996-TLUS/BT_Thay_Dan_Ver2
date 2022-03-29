@@ -171,6 +171,8 @@ $(".btn_LichSuKham").on("click", function () {
           d.TenPhong +
           '" data-HoTen="' +
           d.HoTen +
+          '" data-TenDichVu="' +
+          d.TenDichVu +
           '">' +
           "<td>" +
           stt +
@@ -192,6 +194,9 @@ $(".btn_LichSuKham").on("click", function () {
           "</td>" +
           "<td>" +
           d.HoTen +
+          "</td>" +
+          "<td>" +
+          d.TenDichVu +
           "</td>" +
           '<td class="click_view_theloai"><span class="badge bg-danger">Xem</span></td>' +
           "</tr>";

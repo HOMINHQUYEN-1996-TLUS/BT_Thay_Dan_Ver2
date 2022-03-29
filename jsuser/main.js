@@ -5,6 +5,7 @@ function swapMain(tenbien) {
   
   $(".formBenhNhan").addClass("is-hidden"); //ẩn
   $(".formHoaDon").addClass("is-hidden"); //ẩn
+  $(".formLichSuBenhNhan").addClass("is-hidden"); //ẩn
   $("."+tenbien).removeClass("is-hidden");
 }
 var record = 3;
@@ -98,6 +99,19 @@ $(document).ready(function () {
         "</li>"
     );
     swapMain("formPhongBan");
+    $(".btnthemtl").prop("disabled", false);
+    $(".btnsuatl").prop("disabled", true);
+    $(".btnluutl").prop("disabled", true);
+  });
+  $(".menuLichSuBenhNhan").click(function () {
+    //   $(".titlestatus").html(' <li class="breadcrumb-item"><a href="#">Danh Mục</a></li><li class="breadcrumb-item active">Thể Loại</li>');
+    console.log('da den day benh nhan')
+    $(".titlestatus").html(
+      ' <li class="breadcrumb-item"><a href="#">Danh Mục</a></li><li class="breadcrumb-item active">' +
+        $(this).text() +
+        "</li>"
+    );
+    swapMain("formLichSuBenhNhan");
     $(".btnthemtl").prop("disabled", false);
     $(".btnsuatl").prop("disabled", true);
     $(".btnluutl").prop("disabled", true);
